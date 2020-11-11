@@ -7,13 +7,17 @@ if (employeeCheck == IS_ABSENT){
     console.log("Employee is Present");
 }
 
-//UC-4: To Check the Wages of Employee for a Month
+//UC-4: To Store Daily Wage in Array
 const IS_PART_TIME = 1;
     const IS_FULL_TIME = 2;
     const PART_TIME_HOURS = 4;
     const FULL_TIME_HOURS = 8;
     const WAGE_PER_HOUR = 20;
     const DAYS_PER_MONTH = 20; 
+
+    let daily_wage = new Array();
+    let total_wage = new Array();
+
     let employeeHours =  Employee_Hours(employeeCheck);
 
     let daycount =0;
@@ -23,12 +27,16 @@ const IS_PART_TIME = 1;
         if(daycount<20 && hourcount < 160){
             daycount++;
             hourcount = hourcount + employeeHours;
+            let dailywage = employeeHours* WAGE_PER_HOUR;
             let totalwage = hourcount* WAGE_PER_HOUR;
+
+            daily_wage.push(dailywage);
+            total_wage.push(totalwage);
+            
+            console.log("The Employee Wage on Day",daycount," is",dailywage);
             console.log("The Total Employee Wage after Day",daycount," is",totalwage);
         }
     }
-
-    
     function Employee_Hours(employeeCheck){
     switch (employeeCheck) {
         case IS_PART_TIME:
