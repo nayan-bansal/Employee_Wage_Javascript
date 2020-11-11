@@ -16,11 +16,18 @@ const IS_PART_TIME = 1;
     const DAYS_PER_MONTH = 20; 
     let employeeHours =  Employee_Hours(employeeCheck);
 
-    let employeeWage = employeeHours * WAGE_PER_HOUR;
+    let daycount =0;
+    let hourcount =0;
 
-    let total_wage = employeeWage*DAYS_PER_MONTH;
+    for(let i = 1; i< 31; i++){
+        if(daycount<20 && hourcount < 160){
+            daycount++;
+            hourcount = hourcount + employeeHours;
+            let totalwage = hourcount* WAGE_PER_HOUR;
+            console.log("The Total Employee Wage after Day",daycount," is",totalwage);
+        }
+    }
 
-    console.log("Total Employee wage : $" + total_wage);
     
     function Employee_Hours(employeeCheck){
     switch (employeeCheck) {
