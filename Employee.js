@@ -13,18 +13,22 @@ const IS_PART_TIME = 1;
     const PART_TIME_HOURS = 4;
     const FULL_TIME_HOURS = 8;
     const WAGE_PER_HOUR = 20;
-    let employeeHours = 0;
     
-    switch (employeeCheck) {
-        case IS_PART_TIME:
-            employeeHours = PART_TIME_HOURS;
-            break;
-        case IS_FULL_TIME:
-            employeeHours = FULL_TIME_HOURS;
-            break;
-        default :
-        employeeHours = 0;
-        
-    }
+    let employeeHours =  Employee_Hours(employeeCheck);
+
     let employeeWage = employeeHours * WAGE_PER_HOUR;
     console.log("Employee wage : $" + employeeWage);
+    
+    function Employee_Hours(employeeCheck){
+    switch (employeeCheck) {
+        case IS_PART_TIME:
+            return PART_TIME_HOURS;
+            break;
+        case IS_FULL_TIME:
+            return FULL_TIME_HOURS;
+            break;
+        default :
+        return 0;
+        
+    }
+}
