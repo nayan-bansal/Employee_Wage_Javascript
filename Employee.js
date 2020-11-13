@@ -1,13 +1,4 @@
-//UC_1: To Check EMployee Present or Absent
-let IS_ABSENT = 0;
-let employeeCheck = Math.floor(Math.random()*10)%3;
-if (employeeCheck == IS_ABSENT){
-    console.log("Employee is Absent");
-} else {
-    console.log("Employee is Present");
-}
-
-//UC-4: To Store Daily Wage in Array
+//UC-6: To Store Daily Wage and Total Wage in Array
 const IS_PART_TIME = 1;
     const IS_FULL_TIME = 2;
     const PART_TIME_HOURS = 4;
@@ -18,17 +9,25 @@ const IS_PART_TIME = 1;
     let daily_wage = new Array();
     let total_wage = new Array();
 
-    let employeeHours =  Employee_Hours(employeeCheck);
+    
 
     let daycount =0;
     let hourcount =0;
-
+    let totalwage = 0;
+    let dailywage = 0;
     for(let i = 1; i< 31; i++){
         if(daycount<20 && hourcount < 160){
+            let employeeCheck = Math.floor(Math.random()*10)%3;
+
             daycount++;
+            let employeeHours =  Employee_Hours(employeeCheck);
+
             hourcount = hourcount + employeeHours;
-            let dailywage = employeeHours* WAGE_PER_HOUR;
-            let totalwage = hourcount* WAGE_PER_HOUR;
+
+           
+             dailywage =   employeeHours* WAGE_PER_HOUR;
+            
+             totalwage = totalwage + employeeHours* WAGE_PER_HOUR;
 
             daily_wage.push(dailywage);
             total_wage.push(totalwage);
