@@ -15,8 +15,13 @@ const IS_PART_TIME = 1;
     let hourcount =0;
     let totalwage = 0;
     let dailywage = 0;
+    let totalhours = new Map();
+    let full_day_work = new Array();
+    let part_day_work = new Array();
+    let absent_day =  new Array();
+
     for(let i = 1; i< 31; i++){
-        if(daycount<=20 && hourcount <= 160){
+        if(daycount<20 && hourcount <= 160){
             let employeeCheck = Math.floor(Math.random()*10)%3;
 
             daycount++;
@@ -24,6 +29,12 @@ const IS_PART_TIME = 1;
 
             hourcount = hourcount + employeeHours;
 
+            if(employeeHours == 4)
+            part_day_work.push(i);
+            else if(employeeHours == 8)
+            full_day_work.push(i);
+            else
+            absent_day.push(i);
            
              dailywage =   employeeHours* WAGE_PER_HOUR;
             
@@ -31,9 +42,12 @@ const IS_PART_TIME = 1;
 
             daily_wage.push(dailywage);
             total_wage.push(totalwage);
+
+            
             
             console.log("The Employee Wage on Day",daycount," is",dailywage);
             console.log("The Total Employee Wage after Day",daycount," is",totalwage);
+            totalhours.set(daycount,employeeHours);
         }
     }
     function Employee_Hours(employeeCheck){
@@ -135,4 +149,52 @@ p_flag = 1;}
 
  //UC_7G: Count the Total Number of Days Worked
 console.log("The Total No. of Days Worked are: ",full_count);
+
+//UC-8: To store employee wage and day in Map
+
+let employeewagemap  = new Map();
+let totalwagemap = new Map();
+for(let i=1;i<daily_wage.length;i++){
+    employeewagemap.set(i, daily_wage[i]);
+    
+}
+console.log("The Daywise Wages are:\n");
+for(let i=1;i<daily_wage.length;i++)
+console.log("The Daily Wage on Day ",i," is ",employeewagemap.get(i));
+
+for(let i=1;i<total_wage.length;i++){
+    totalwagemap.set(i, total_wage[i]);   
+}
+console.log("The Daywise Total Wages are:\n");
+for(let i=1;i<total_wage.length;i++)
+console.log("The Total Wage on Day ",i," is ",totalwagemap.get(i));
+
+//UC-9: To Print No. of hours worked and Wages using Arrow Function and Print Full Day, Half Day and Absent Days
+let total_sum = 0;
+let sum_wage = totalwagemap =>  totalwagemap.get(total_wage.length-1);
+console.log("\nThe Total Wage Paid to the Employee is :", sum_wage(totalwagemap));
+
+let sum_hour = totalhours =>  {
+    let sum = 0;
+    for(let i =1; i<21;i++){
+        sum = sum + totalhours.get(i);
+    }
+    return sum
+};
+console.log("\nThe Total Hours Employee Worked is :", sum_hour(totalhours));
+
+working_day = full_day_work => {
+
+    for (let i = 0;i<full_day_work.length;i++)
+    console.log( "Day :" + full_day_work[i]);
+
+    return full_day_work.length;
+}
+
+console.log("Full Working Days: ",working_day(full_day_work));
+console.log("Half Working Days: ",working_day(part_day_work));
+console.log("Absent Days: ",working_day(absent_day));
+
+
+
 
