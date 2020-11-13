@@ -136,20 +136,3 @@ p_flag = 1;}
  //UC_7G: Count the Total Number of Days Worked
 console.log("The Total No. of Days Worked are: ",full_count);
 
-//UC-8: To store employee wage and day in Map
-
-let employeewagemap  = new Map();
-let totalwagemap = new Map();
-for(let i=1;i<daily_wage.length;i++){
-    employeewagemap.set(i, daily_wage[i]);
-    
-}
-console.log("The Daywise Wages are:\n");
-console.log(employeewagemap);
-
-for(let i=1;i<total_wage.length;i++){
-    totalwagemap.set(i, total_wage[i]);
-    
-}
-console.log("The Daywise Total Wages are:\n");
-console.log(totalwagemap);
