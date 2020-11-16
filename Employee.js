@@ -21,13 +21,17 @@
 
         switch(EmployeeCheck){
             case 1:
-                emphours = emphours + PART_TIME_HOURS;
-                empwage = empwage + PART_TIME_HOURS*WAGE_PER_HOUR;
+                emphours =  PART_TIME_HOURS;
+                empwage =  PART_TIME_HOURS*WAGE_PER_HOUR;
                 break;
             case 2:
-                emphours = emphours + FULL_TIME_HOURS;
-                empwage = empwage + FULL_TIME_HOURS*WAGE_PER_HOUR;
+                emphours =  FULL_TIME_HOURS;
+                empwage =  FULL_TIME_HOURS*WAGE_PER_HOUR;
                 break;
+                case 3:
+                    emphours =  0;
+                    empwage =  0;
+                    break;
             default:
                 break;
         }
@@ -46,5 +50,28 @@
     console.log("The Total Hours Worked and Time"+EmployeeTimeandWage);
    
 
+    //UC-11: Object Operation using Arrow Functions
+
+    //UC-11A: Find total wages and hours usinf arrow functions
+
+    let total_wages = EmployeeTimeandWage.filter(EmployeeTimeandWage => EmployeeTimeandWage.Employee_Wage > 0).reduce((total_wages,EmployeeTimeandWage) => total_wages = total_wages + EmployeeTimeandWage.Employee_Wage,0);
+    console.log("\nThe Total Wages are : "+total_wages);
+
+    let total_hours = EmployeeTimeandWage.filter(EmployeeTimeandWage => EmployeeTimeandWage.Employee_Hours > 0).reduce((total_hours,EmployeeTimeandWage) => total_hours = total_hours + EmployeeTimeandWage.Employee_Hours,0);
+    console.log("\nThe Total Hours are : "+total_hours);
+
+    //UC-11B: Show Full Working Day
+
+     EmployeeTimeandWage.filter(EmployeeTimeandWage => EmployeeTimeandWage.Employee_Hours ==8).forEach(EmployeeTimeandWage => console.log(EmployeeTimeandWage.toString()));
+    
+    //UC-11C- Show PArt Time Working Day
+    let part_time = EmployeeTimeandWage.filter(EmployeeTimeandWage => EmployeeTimeandWage.Employee_Hours ==4).map(EmployeeTimeandWage => EmployeeTimeandWage.toString());
+    
+    console.log("Part Time Working Days:"+part_time);
+
+    //UC_11D- Absent Days
+    let Absent_days = EmployeeTimeandWage.filter(EmployeeTimeandWage => EmployeeTimeandWage.Employee_Hours == 0).map(EmployeeTimeandWage => EmployeeTimeandWage.toString());
+    
+    console.log("\nAbsent Days:"+Absent_days);
 
 
