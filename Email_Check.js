@@ -12,20 +12,13 @@ check_validity(email_2);
 let email_3 = "abc.@bridgelab.co";
 check_validity(email_3);
 
-<<<<<<< HEAD
-=======
 //UC-4: Handling Optional Part
 let email_4 = "abc.x_yz@bridgelabz.co.in";
 check_validity(email_4);
 
-<<<<<<< HEAD
->>>>>>> Email_UC_4
-=======
 //UC-5: Final Email Address
 let email_5 = "abc.xyz@bridgelabz.co.in";
 check_validity(email_5);
-
->>>>>>> Email_UC_5
 
 function check_validity(sample){
     let output = PinRegex.test(sample);
